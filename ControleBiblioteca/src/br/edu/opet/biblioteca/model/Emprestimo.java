@@ -8,7 +8,7 @@ import br.edu.opet.biblioteca.enums.StatusEmprestimo;
 public class Emprestimo implements Comparable<Emprestimo>
 {
     private int              id;
-    private Livro            livro;
+    private Exemplar         exemplar;
     private Aluno            aluno;
     private LocalDate        dataLocacao;
     private LocalDate        dataDevolucao;
@@ -21,12 +21,12 @@ public class Emprestimo implements Comparable<Emprestimo>
         // TODO Auto-generated constructor stub
     }
 
-    public Emprestimo(int pId, Livro pLivro, Aluno pAluno, LocalDate pDataLocacao, LocalDate pDataDevolucao, StatusEmprestimo pStatus,
+    public Emprestimo(int pId, Exemplar pExemplar, Aluno pAluno, LocalDate pDataLocacao, LocalDate pDataDevolucao, StatusEmprestimo pStatus,
                     double pValorMulta)
     {
         super();
         id = pId;
-        livro = pLivro;
+        exemplar = pExemplar;
         aluno = pAluno;
         dataLocacao = pDataLocacao;
         dataDevolucao = pDataDevolucao;
@@ -44,14 +44,14 @@ public class Emprestimo implements Comparable<Emprestimo>
         id = pId;
     }
 
-    public Livro getLivro()
+    public Exemplar getExemplar()
     {
-        return livro;
+        return exemplar;
     }
 
-    public void setLivro(Livro pLivro)
+    public void setExemplar(Exemplar pExemplar)
     {
-        livro = pLivro;
+        exemplar = pExemplar;
     }
 
     public Aluno getAluno()
@@ -111,7 +111,7 @@ public class Emprestimo implements Comparable<Emprestimo>
         tBuilder.append("Emprestimo [");
         tBuilder.append(getId());
         tBuilder.append(", ");
-        tBuilder.append(getLivro());
+        tBuilder.append(getExemplar());
         tBuilder.append(", ");
         tBuilder.append(getAluno());
         tBuilder.append(", ");
