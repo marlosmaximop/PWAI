@@ -1,5 +1,6 @@
 package br.edu.opet.biblioteca.teste;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import br.edu.opet.biblioteca.dao.DaoFactory;
@@ -14,7 +15,7 @@ public class TesteLivroDao
         LivroDAO tDao = DaoFactory.getLivroDAO();
 
         // Criando os livros para inclusão
-        Livro tLivro1 = new Livro(9_788_539_605_378L, "Cozinha Prática", "Rita Lobo", "Senac SP", 2016, 1, 61.40);
+        Livro tLivro1 = new Livro(9_788_539_605_378L, "Cozinha Prática", "Rita Lobo", "Senac SP", 2016, 1, new BigDecimal("61.40"));
         
         Livro tLivro2 = new Livro();
         tLivro2.setIsbn(9_788_567_431_024L);
@@ -23,7 +24,7 @@ public class TesteLivroDao
         tLivro2.setEditora("Panelinha");
         tLivro2.setAnoEdicao(2014);
         tLivro2.setEdicao(1);
-        tLivro2.setValorCompra(58.16);
+        tLivro2.setValorCompra(new BigDecimal("58.16"));
 
         System.out.println();
         System.out.println("Gravando os livros");

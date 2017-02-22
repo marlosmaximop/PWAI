@@ -17,9 +17,7 @@ public class ExemplarJdbcDAO implements ExemplarDAO
 {
     private Connection conexao = Conexao.getConexao();                               // Conexão com o banco de dados
     private String     campos  = "ID, ISBN_LIVRO, EXEMPLAR_LOCAL";
-//    ID             INT           NOT NULL PRIMARY KEY,
-//    ISBN_EXEMPLAR     DECIMAL(13)   NOT NULL,
-//    EXEMPLAR_LOCAL CHAR(1)       NOT NULL,
+
     @Override
     public Exemplar create(Exemplar pExemplar)
     {
@@ -238,7 +236,7 @@ public class ExemplarJdbcDAO implements ExemplarDAO
         tLivro.setEditora(tResultSet.getString("EDITORA"));
         tLivro.setAnoEdicao(tResultSet.getInt("ANO_EDICAO"));
         tLivro.setEdicao(tResultSet.getInt("EDICAO"));
-        tLivro.setValorCompra(tResultSet.getDouble("VALOR_COMPRA"));
+        tLivro.setValorCompra(tResultSet.getBigDecimal("VALOR_COMPRA"));
         
         tExemplar.setId(tResultSet.getInt("ID"));
         tExemplar.setLivro(tLivro);

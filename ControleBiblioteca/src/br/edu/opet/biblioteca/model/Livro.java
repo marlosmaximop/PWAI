@@ -1,5 +1,6 @@
 package br.edu.opet.biblioteca.model;
 
+import java.math.BigDecimal;
 import java.util.Comparator;
 
 public class Livro implements Comparable<Livro>
@@ -10,14 +11,14 @@ public class Livro implements Comparable<Livro>
     private String  editora;
     private int     anoEdicao;
     private int     edicao;
-    private double  valorCompra;
+    private BigDecimal  valorCompra;
 
     public Livro()
     {
         super();
     }
 
-    public Livro(long pIsbn, String pTitulo, String pAutor, String pEditora, int pAnoEdicao, int pEdicao, double pValorCompra)
+    public Livro(long pIsbn, String pTitulo, String pAutor, String pEditora, int pAnoEdicao, int pEdicao, BigDecimal pValorCompra)
     {
         super();
         isbn = pIsbn;
@@ -89,12 +90,12 @@ public class Livro implements Comparable<Livro>
         edicao = pEdicao;
     }
 
-    public double getValorCompra()
+    public BigDecimal getValorCompra()
     {
         return valorCompra;
     }
 
-    public void setValorCompra(double pValorCompra)
+    public void setValorCompra(BigDecimal pValorCompra)
     {
         valorCompra = pValorCompra;
     }

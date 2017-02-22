@@ -1,5 +1,7 @@
 package br.edu.opet.biblioteca.teste;
 
+import java.math.BigDecimal;
+
 import br.edu.opet.biblioteca.enums.SituacaoAluno;
 import br.edu.opet.biblioteca.model.Aluno;
 import br.edu.opet.biblioteca.model.Exemplar;
@@ -24,7 +26,7 @@ public class TesteModel
         System.out.println("Aluno 1 : " + tAluno1);
         System.out.println("Aluno 2 : " + tAluno2);
 
-        Livro tLivro1 = new Livro(9_788_539_605_378L, "Cozinha Prática", "Rita Lobo", "Senac SP", 2016, 1, 61.40);
+        Livro tLivro1 = new Livro(9_788_539_605_378L, "Cozinha Prática", "Rita Lobo", "Senac SP", 2016, 1, new BigDecimal("61.40"));
         Livro tLivro2 = new Livro();
         tLivro2.setIsbn(9_788_567_431_024L);
         tLivro2.setTitulo("Pitadas da Rita");
@@ -32,7 +34,7 @@ public class TesteModel
         tLivro2.setEditora("Panelinha");
         tLivro2.setAnoEdicao(2014);
         tLivro2.setEdicao(1);
-        tLivro2.setValorCompra(58.16);
+        tLivro2.setValorCompra(new BigDecimal("58.16"));
         
         System.out.println();
         System.out.println("Livros");

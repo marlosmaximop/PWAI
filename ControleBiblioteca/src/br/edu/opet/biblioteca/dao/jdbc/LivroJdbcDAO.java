@@ -38,7 +38,7 @@ public class LivroJdbcDAO implements LivroDAO
             tComandoJDBC.setString(i++, pLivro.getEditora());
             tComandoJDBC.setInt(i++, pLivro.getAnoEdicao());
             tComandoJDBC.setInt(i++, pLivro.getEdicao());
-            tComandoJDBC.setDouble(i++, pLivro.getValorCompra());
+            tComandoJDBC.setBigDecimal(i++, pLivro.getValorCompra());
 
             // Executando o comando de gravação
             int tQtdeReg = tComandoJDBC.executeUpdate();
@@ -132,7 +132,7 @@ public class LivroJdbcDAO implements LivroDAO
             tComandoJDBC.setString(i++, pLivro.getEditora());
             tComandoJDBC.setInt(i++, pLivro.getAnoEdicao());
             tComandoJDBC.setInt(i++, pLivro.getEdicao());
-            tComandoJDBC.setDouble(i++, pLivro.getValorCompra());
+            tComandoJDBC.setBigDecimal(i++, pLivro.getValorCompra());
             tComandoJDBC.setLong(i++, pLivro.getIsbn());
 
             // Executando o comando de regravação
@@ -381,7 +381,7 @@ public class LivroJdbcDAO implements LivroDAO
         tLivro.setEditora(tResultSet.getString("EDITORA"));
         tLivro.setAnoEdicao(tResultSet.getInt("ANO_EDICAO"));
         tLivro.setEdicao(tResultSet.getInt("EDICAO"));
-        tLivro.setValorCompra(tResultSet.getDouble("VALOR_COMPRA"));
+        tLivro.setValorCompra(tResultSet.getBigDecimal("VALOR_COMPRA"));
 
         // Retornando o livro criado
         return tLivro;

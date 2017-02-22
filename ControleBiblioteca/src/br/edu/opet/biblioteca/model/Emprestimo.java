@@ -1,5 +1,6 @@
 package br.edu.opet.biblioteca.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Comparator;
 
@@ -13,7 +14,7 @@ public class Emprestimo implements Comparable<Emprestimo>
     private LocalDate        dataLocacao;
     private LocalDate        dataDevolucao;
     private StatusEmprestimo status;
-    private double           valorMulta;
+    private BigDecimal       valorMulta;
 
     public Emprestimo()
     {
@@ -22,7 +23,7 @@ public class Emprestimo implements Comparable<Emprestimo>
     }
 
     public Emprestimo(int pId, Exemplar pExemplar, Aluno pAluno, LocalDate pDataLocacao, LocalDate pDataDevolucao, StatusEmprestimo pStatus,
-                    double pValorMulta)
+                    BigDecimal pValorMulta)
     {
         super();
         id = pId;
@@ -94,12 +95,12 @@ public class Emprestimo implements Comparable<Emprestimo>
         status = pStatus;
     }
 
-    public double getValorMulta()
+    public BigDecimal getValorMulta()
     {
         return valorMulta;
     }
 
-    public void setValorMulta(double pValorMulta)
+    public void setValorMulta(BigDecimal pValorMulta)
     {
         valorMulta = pValorMulta;
     }
