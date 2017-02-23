@@ -21,7 +21,7 @@ public class AlunoDTO extends AbstractDTO<Aluno>
         super(pOk, pMensagem, pLista);
     }
 
-    public Aluno getALuno()
+    public Aluno getAluno()
     {
         return getObjeto();
     }
