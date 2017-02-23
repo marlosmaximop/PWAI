@@ -9,6 +9,7 @@ import java.util.List;
 
 import br.edu.opet.biblioteca.dao.ExemplarDAO;
 import br.edu.opet.biblioteca.jdbc.Conexao;
+import br.edu.opet.biblioteca.model.Aluno;
 import br.edu.opet.biblioteca.model.Exemplar;
 import br.edu.opet.biblioteca.model.Livro;
 import br.edu.opet.biblioteca.util.ExceptionUtil;
@@ -223,12 +224,57 @@ public class ExemplarJdbcDAO implements ExemplarDAO
         return tLista;
     }
 
+    @Override
+    public List<Exemplar> searchByLivro(Livro pLivro)
+    {
+        // Criando a tLista de exemplares vazia
+        List<Exemplar> tLista = new ArrayList<>();
+
+        try
+        {
+            // Criando o comando SQL e o comando JDBC
+            String tComandoSQL = "SELECT EXEMPLAR.ID, LIVRO.ISBN, LIVRO.TITULO, "
+                            + "LIVRO.AUTOR, LIVRO.EDITORA, LIVRO.ANO_EDICAO, "
+                            + "LIVRO.EDICAO, LIVRO.VALOR_COMPRA, EXEMPLAR.EXEMPLAR_LOCAL "
+                            + "FROM EXEMPLAR, LIVRO  "
+                            + "WHERE EXEMPLAR.ISBN_LIVRO = ? AND EXEMPLAR.ISBN_LIVRO = LIVRO.ISBN";
+            PreparedStatement tComandoJDBC = conexao.prepareStatement(tComandoSQL);
+
+            // Colocando o parâmetro recebido no comando JDBC
+            tComandoJDBC.setLong(1, pLivro.getIsbn());
+
+            // Executando o comando e salvando o ResultSet para processar
+            ResultSet tResultSet = tComandoJDBC.executeQuery();
+
+            // Enquanto houver registros, processa
+            while (tResultSet.next())
+            {
+                // Salvando o Exemplar retornado para adicionar na lista
+                Exemplar tExemplar = carregarExemplar(tResultSet);
+
+                // Adicionando o exemplar na tLista
+                tLista.add(tExemplar);
+            }
+
+            // Liberando os recursos JDBC
+            tResultSet.close();
+            tComandoJDBC.close();
+        }
+        catch (SQLException tExcept)
+        {
+            ExceptionUtil.mostrarErro(tExcept, "Erro no método de recuperação da lista de exemplares");
+        }
+
+        // Retornando a lista de exemplares
+        return tLista;
+    }
+
     private Exemplar carregarExemplar(ResultSet tResultSet) throws SQLException
     {
         // Criando um novo exemplar para armazenar as informações lidas
         Livro tLivro = new Livro();
         Exemplar tExemplar = new Exemplar();
-
+    
         // Recuperando as informações do ResultSet e colocando objeto criado
         tLivro.setIsbn(tResultSet.getLong("ISBN"));
         tLivro.setTitulo(tResultSet.getString("TITULO"));
@@ -241,7 +287,7 @@ public class ExemplarJdbcDAO implements ExemplarDAO
         tExemplar.setId(tResultSet.getInt("ID"));
         tExemplar.setLivro(tLivro);
         tExemplar.setExemplarLocal(tResultSet.getString("EXEMPLAR_LOCAL").charAt(0) == 'S');
-
+    
         // Retornando o exemplar criado
         return tExemplar;
     }

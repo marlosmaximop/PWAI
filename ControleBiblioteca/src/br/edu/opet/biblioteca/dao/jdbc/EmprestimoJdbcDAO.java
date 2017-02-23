@@ -443,6 +443,53 @@ public class EmprestimoJdbcDAO implements EmprestimoDAO
         return tLista;
     }
 
+    @Override
+    public List<Emprestimo> searchByExemplar(Exemplar pExemplar)
+    {
+        // Criando a tLista de empréstimos vazia
+        List<Emprestimo> tLista = new ArrayList<>();
+
+        try
+        {
+            // Criando o comando SQL e o comando JDBC
+            String tComandoSQL = "SELECT EMPRESTIMO.ID AS ID_EMPRESTIMO, EMPRESTIMO.DATA_LOCACAO, EMPRESTIMO.DATA_DEVOLUCAO, EMPRESTIMO.STATUS, EMPRESTIMO.VALOR_MULTA, "
+                            + "LIVRO.ISBN, LIVRO.TITULO, LIVRO.AUTOR, LIVRO.EDITORA, LIVRO.ANO_EDICAO, LIVRO.EDICAO, LIVRO.VALOR_COMPRA, " 
+                            + "ALUNO.MATRICULA, ALUNO.NOME, ALUNO.CURSO, ALUNO.TELEFONE, ALUNO.EMAIL, ALUNO.SITUACAO, "
+                            + "EXEMPLAR.ID AS ID_EXEMPLAR, EXEMPLAR.EXEMPLAR_LOCAL "
+                            + "FROM EMPRESTIMO, EXEMPLAR, LIVRO, ALUNO "
+                            + "WHERE EMPRESTIMO.ID_EXEMPLAR = ? AND EMPRESTIMO.ID_EXEMPLAR = EXEMPLAR.ID AND EXEMPLAR.ISBN_LIVRO = LIVRO.ISBN AND EMPRESTIMO.MATRICULA_ALUNO = ALUNO.MATRICULA";
+            PreparedStatement tComandoJDBC = conexao.prepareStatement(tComandoSQL);
+
+            // Colocando o parâmetro recebido no comando JDBC
+            tComandoJDBC.setInt(1, pExemplar.getId());
+
+            // Executando o comando e salvando o ResultSet para processar
+            ResultSet tResultSet = tComandoJDBC.executeQuery();
+
+            
+            // Enquanto houver registros, processa
+            while (tResultSet.next())
+            {
+                // Salvando o Emprestimo retornado para adicionar na lista
+                Emprestimo tEmprestimo = carregarEmprestimo(tResultSet);
+
+                // Adicionando o emprestimo na tLista
+                tLista.add(tEmprestimo);
+            }
+
+            // Liberando os recursos JDBC
+            tResultSet.close();
+            tComandoJDBC.close();
+        }
+        catch (SQLException tExcept)
+        {
+            ExceptionUtil.mostrarErro(tExcept, "Erro no método de recuperação da lista de empréstimos");
+        }
+
+        // Retornando a lista de empréstimos
+        return tLista;
+    }
+
     private Emprestimo carregarEmprestimo(ResultSet tResultSet) throws SQLException
     {
         // Criando um novo emprestimo para armazenar as informações lidas
@@ -458,7 +505,7 @@ public class EmprestimoJdbcDAO implements EmprestimoDAO
         tAluno.setTelefone(tResultSet.getLong("TELEFONE"));
         tAluno.setEmail(tResultSet.getString("EMAIL"));
         tAluno.setSituacao(SituacaoAluno.fromChar(tResultSet.getString("SITUACAO").charAt(0)));
-
+    
         tLivro.setIsbn(tResultSet.getLong("ISBN"));
         tLivro.setTitulo(tResultSet.getString("TITULO"));
         tLivro.setAutor(tResultSet.getString("AUTOR"));
@@ -486,7 +533,7 @@ public class EmprestimoJdbcDAO implements EmprestimoDAO
             tEmprestimo.setValorMulta(null);
         else
             tEmprestimo.setValorMulta(tValorMulta);
-
+    
         // Retornando o emprestimo criado
         return tEmprestimo;
     }

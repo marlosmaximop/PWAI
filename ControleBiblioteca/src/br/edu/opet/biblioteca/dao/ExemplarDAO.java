@@ -3,6 +3,7 @@ package br.edu.opet.biblioteca.dao;
 import java.util.List;
 
 import br.edu.opet.biblioteca.model.Exemplar;
+import br.edu.opet.biblioteca.model.Livro;
 
 public interface ExemplarDAO
 {
@@ -20,4 +21,7 @@ public interface ExemplarDAO
 
     // Método para pesquisar todos os exemplares da base de dados
     List<Exemplar> search();
+
+    // Método para pesquisar por livro todos os exemplares da base de dados
+    List<Exemplar> searchByLivro(Livro pLivro);
 }
