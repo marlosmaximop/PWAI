@@ -4,12 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.opet.biblioteca.dao.ExemplarDAO;
 import br.edu.opet.biblioteca.jdbc.Conexao;
-import br.edu.opet.biblioteca.model.Aluno;
 import br.edu.opet.biblioteca.model.Exemplar;
 import br.edu.opet.biblioteca.model.Livro;
 import br.edu.opet.biblioteca.util.ExceptionUtil;
@@ -17,7 +18,7 @@ import br.edu.opet.biblioteca.util.ExceptionUtil;
 public class ExemplarJdbcDAO implements ExemplarDAO
 {
     private Connection conexao = Conexao.getConexao();                               // Conexão com o banco de dados
-    private String     campos  = "ID, ISBN_LIVRO, EXEMPLAR_LOCAL";
+    private String     campos  = "ID, ISBN_LIVRO, EXEMPLAR_LOCAL, DATA_ATUALIZACAO";
 
     @Override
     public Exemplar create(Exemplar pExemplar)
@@ -29,7 +30,7 @@ public class ExemplarJdbcDAO implements ExemplarDAO
         {
             // Criando o comando SQL e o comando JDBC
             String tComandoSQL =
-                "INSERT INTO EXEMPLAR (" + campos + ") VALUES (EXEMPLAR_SEQ.NEXTVAL, ?, ?)";
+                "INSERT INTO EXEMPLAR (" + campos + ") VALUES (EXEMPLAR_SEQ.NEXTVAL, ?, ?, ?)";
             PreparedStatement tComandoJDBC = conexao.prepareStatement(tComandoSQL, new String [] {"ID"});
 
             // Colocando os parâmetros recebidos no comando JDBC
@@ -37,6 +38,7 @@ public class ExemplarJdbcDAO implements ExemplarDAO
 
             tComandoJDBC.setLong(i++, pExemplar.getLivro().getIsbn());
             tComandoJDBC.setString(i++, pExemplar.isExemplarLocal() ? "S" : "N");
+            tComandoJDBC.setTimestamp(i++, Timestamp.valueOf(LocalDateTime.now()));
 
             // Executando o comando de gravação
             int tQtdeReg = tComandoJDBC.executeUpdate();
@@ -118,7 +120,8 @@ public class ExemplarJdbcDAO implements ExemplarDAO
             String tComandoSQL =
                             "UPDATE EXEMPLAR SET "
                             + "ISBN_LIVRO = ?, "
-                            + "EXEMPLAR_LOCAL = ? "
+                            + "EXEMPLAR_LOCAL = ?, "
+                            + "DATA_ATUALIZACAO = ? " 
                             + "WHERE ID = ?";
             PreparedStatement tComandoJDBC = conexao.prepareStatement(tComandoSQL);
 
@@ -127,6 +130,7 @@ public class ExemplarJdbcDAO implements ExemplarDAO
 
             tComandoJDBC.setLong(i++, pExemplar.getLivro().getIsbn());
             tComandoJDBC.setString(i++, pExemplar.isExemplarLocal() ? "S" : "N");
+            tComandoJDBC.setTimestamp(i++, Timestamp.valueOf(LocalDateTime.now()));
             tComandoJDBC.setLong(i++, pExemplar.getId());
 
             // Executando o comando de regravação

@@ -6,8 +6,10 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.sql.Types;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +26,7 @@ import br.edu.opet.biblioteca.util.ExceptionUtil;
 public class EmprestimoJdbcDAO implements EmprestimoDAO
 {
     private Connection conexao = Conexao.getConexao();            // Conexão com o banco de dados
-    private String     campos  = "ID, ID_EXEMPLAR, MATRICULA_ALUNO, DATA_LOCACAO, DATA_DEVOLUCAO, STATUS, VALOR_MULTA";
+    private String     campos  = "ID, ID_EXEMPLAR, MATRICULA_ALUNO, DATA_LOCACAO, DATA_DEVOLUCAO, STATUS, VALOR_MULTA, DATA_ATUALIZACAO";
     
     @Override
     public Emprestimo create(Emprestimo pEmprestimo)
@@ -36,7 +38,7 @@ public class EmprestimoJdbcDAO implements EmprestimoDAO
         {
             // Criando o comando SQL e o comando JDBC
             String tComandoSQL =
-                "INSERT INTO EMPRESTIMO (" + campos + ") VALUES (EMPRESTIMO_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?)";
+                "INSERT INTO EMPRESTIMO (" + campos + ") VALUES (EMPRESTIMO_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement tComandoJDBC = conexao.prepareStatement(tComandoSQL, new String [] {"ID"});
 
             // Colocando os parâmetros recebidos no comando JDBC
@@ -54,6 +56,7 @@ public class EmprestimoJdbcDAO implements EmprestimoDAO
                 tComandoJDBC.setNull(i++, Types.DECIMAL);
             else
                 tComandoJDBC.setBigDecimal(i++, pEmprestimo.getValorMulta());
+            tComandoJDBC.setTimestamp(i++, Timestamp.valueOf(LocalDateTime.now()));
 
             // Executando o comando de gravação
             int tQtdeReg = tComandoJDBC.executeUpdate();
@@ -141,7 +144,8 @@ public class EmprestimoJdbcDAO implements EmprestimoDAO
                             + "DATA_LOCACAO = ?, "
                             + "DATA_DEVOLUCAO = ?, "
                             + "STATUS = ?, "
-                            + "VALOR_MULTA = ? "
+                            + "VALOR_MULTA = ?, "
+                            + "DATA_ATUALIZACAO = ? " 
                             + "WHERE ID = ?";
             PreparedStatement tComandoJDBC = conexao.prepareStatement(tComandoSQL);
 
@@ -160,6 +164,7 @@ public class EmprestimoJdbcDAO implements EmprestimoDAO
                 tComandoJDBC.setNull(i++, Types.DECIMAL);
             else
                 tComandoJDBC.setBigDecimal(i++, pEmprestimo.getValorMulta());
+            tComandoJDBC.setTimestamp(i++, Timestamp.valueOf(LocalDateTime.now()));
             tComandoJDBC.setLong(i++, pEmprestimo.getExemplar().getId());
 
             // Executando o comando de regravação

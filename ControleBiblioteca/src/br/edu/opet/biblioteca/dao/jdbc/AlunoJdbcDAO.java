@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +18,7 @@ import br.edu.opet.biblioteca.util.ExceptionUtil;
 public class AlunoJdbcDAO implements AlunoDAO
 {
     private Connection conexao = Conexao.getConexao();                               // Conexão com o banco de dados
-    private String     campos  = "MATRICULA, NOME, CURSO, TELEFONE, EMAIL, SITUACAO";
+    private String     campos  = "MATRICULA, NOME, CURSO, TELEFONE, EMAIL, SITUACAO, DATA_ATUALIZACAO";
 
     @Override
     public Aluno create(Aluno pAluno)
@@ -28,7 +30,7 @@ public class AlunoJdbcDAO implements AlunoDAO
         {
             // Criando o comando SQL e o comando JDBC
             String tComandoSQL =
-                "INSERT INTO ALUNO (" + campos + ") VALUES (?, ?, ?, ?, ?, ?)";
+                "INSERT INTO ALUNO (" + campos + ") VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement tComandoJDBC = conexao.prepareStatement(tComandoSQL);
 
             // Colocando os parâmetros recebidos no comando JDBC
@@ -40,6 +42,7 @@ public class AlunoJdbcDAO implements AlunoDAO
             tComandoJDBC.setLong(i++, pAluno.getTelefone());
             tComandoJDBC.setString(i++, pAluno.getEmail());
             tComandoJDBC.setString(i++, String.valueOf(pAluno.getSituacao().getCodigo()));
+            tComandoJDBC.setTimestamp(i++, Timestamp.valueOf(LocalDateTime.now()));
 
             // Executando o comando de gravação
             int tQtdeReg = tComandoJDBC.executeUpdate();
@@ -120,7 +123,8 @@ public class AlunoJdbcDAO implements AlunoDAO
                             + "CURSO = ?, "
                             + "TELEFONE = ?, "
                             + "EMAIL = ?, "
-                            + "SITUACAO = ? " 
+                            + "SITUACAO = ?, " 
+                            + "DATA_ATUALIZACAO = ? " 
                             + "WHERE MATRICULA = ?";
             PreparedStatement tComandoJDBC = conexao.prepareStatement(tComandoSQL);
 
@@ -132,6 +136,7 @@ public class AlunoJdbcDAO implements AlunoDAO
             tComandoJDBC.setLong(i++, pAluno.getTelefone());
             tComandoJDBC.setString(i++, pAluno.getEmail());
             tComandoJDBC.setString(i++, String.valueOf(pAluno.getSituacao().getCodigo()));
+            tComandoJDBC.setTimestamp(i++, Timestamp.valueOf(LocalDateTime.now()));
             tComandoJDBC.setLong(i++, pAluno.getMatricula());
 
             // Executando o comando de regravação
@@ -162,12 +167,15 @@ public class AlunoJdbcDAO implements AlunoDAO
         try
         {
             // Criando o comando SQL e o comando JDBC
-            String tComandoSQL = "DELETE ALUNO " +
-                            " WHERE MATRICULA = ?";
+            String tComandoSQL =
+                            "DELETE ALUNO "
+                            + "WHERE MATRICULA = ?";
             PreparedStatement tComandoJDBC = conexao.prepareStatement(tComandoSQL);
 
             // Colocando o parâmetro recebido no comando JDBC
-            tComandoJDBC.setLong(1, pMatricula);
+            int i = 1;
+
+            tComandoJDBC.setLong(i++, pMatricula);
 
             // Executando o comando de remoção
             int tQtdeReg = tComandoJDBC.executeUpdate();
@@ -197,8 +205,8 @@ public class AlunoJdbcDAO implements AlunoDAO
         {
             // Criando o comando SQL e o comando JDBC
             String tComandoSQL =
-                            "SELECT " + campos + " FROM ALUNO " +
-                            "ORDER BY UPPER(NOME)";
+                            "SELECT " + campos + " FROM ALUNO " 
+                            + "ORDER BY UPPER(NOME)";
             PreparedStatement tComandoJDBC = conexao.prepareStatement(tComandoSQL);
 
             // Executando o comando e salvando o ResultSet para processar
@@ -241,7 +249,7 @@ public class AlunoJdbcDAO implements AlunoDAO
             // Criando o comando SQL e o comando JDBC
             String tComandoSQL =
                             "SELECT " + campos + " FROM ALUNO " +
-                            "WHERE UPPER(NOME) LIKE UPPER(?)" +
+                            "WHERE UPPER(NOME) LIKE UPPER(?) " +
                             "ORDER BY UPPER(NOME)";
             PreparedStatement tComandoJDBC = conexao.prepareStatement(tComandoSQL);
 
@@ -288,7 +296,7 @@ public class AlunoJdbcDAO implements AlunoDAO
             // Criando o comando SQL e o comando JDBC
             String tComandoSQL =
                             "SELECT " + campos + " FROM ALUNO " +
-                            " WHERE UPPER(CURSO) LIKE UPPER(?)" +
+                            " WHERE UPPER(CURSO) LIKE UPPER(?) " +
                             "ORDER BY UPPER(NOME)";
             PreparedStatement tComandoJDBC = conexao.prepareStatement(tComandoSQL);
 
@@ -335,7 +343,7 @@ public class AlunoJdbcDAO implements AlunoDAO
             // Criando o comando SQL e o comando JDBC
             String tComandoSQL =
                             "SELECT " + campos + " FROM ALUNO " +
-                            "WHERE UPPER(EMAIL) LIKE UPPER(?)" +
+                            "WHERE UPPER(EMAIL) LIKE UPPER(?) " +
                             "ORDER BY UPPER(NOME)";
             PreparedStatement tComandoJDBC = conexao.prepareStatement(tComandoSQL);
 

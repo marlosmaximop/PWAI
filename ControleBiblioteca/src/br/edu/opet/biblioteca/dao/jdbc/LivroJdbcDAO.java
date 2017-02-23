@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +17,7 @@ import br.edu.opet.biblioteca.util.ExceptionUtil;
 public class LivroJdbcDAO implements LivroDAO
 {
     private Connection conexao = Conexao.getConexao();                               // Conexão com o banco de dados
-    private String     campos  = "ISBN, TITULO, AUTOR, EDITORA, ANO_EDICAO, EDICAO, VALOR_COMPRA";
+    private String     campos  = "ISBN, TITULO, AUTOR, EDITORA, ANO_EDICAO, EDICAO, VALOR_COMPRA, DATA_ATUALIZACAO";
     @Override
     public Livro create(Livro pLivro)
     {
@@ -26,7 +28,7 @@ public class LivroJdbcDAO implements LivroDAO
         {
             // Criando o comando SQL e o comando JDBC
             String tComandoSQL =
-                "INSERT INTO LIVRO (" + campos + ") VALUES (?, ?, ?, ?, ?, ?, ?)";
+                "INSERT INTO LIVRO (" + campos + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement tComandoJDBC = conexao.prepareStatement(tComandoSQL);
 
             // Colocando os parâmetros recebidos no comando JDBC
@@ -39,6 +41,7 @@ public class LivroJdbcDAO implements LivroDAO
             tComandoJDBC.setInt(i++, pLivro.getAnoEdicao());
             tComandoJDBC.setInt(i++, pLivro.getEdicao());
             tComandoJDBC.setBigDecimal(i++, pLivro.getValorCompra());
+            tComandoJDBC.setTimestamp(i++, Timestamp.valueOf(LocalDateTime.now()));
 
             // Executando o comando de gravação
             int tQtdeReg = tComandoJDBC.executeUpdate();
@@ -120,7 +123,8 @@ public class LivroJdbcDAO implements LivroDAO
                             + "EDITORA = ?, "
                             + "ANO_EDICAO = ?, "
                             + "EDICAO = ?, " 
-                            + "VALOR_COMPRA = ? " 
+                            + "VALOR_COMPRA = ?, " 
+                            + "DATA_ATUALIZACAO = ? " 
                             + "WHERE ISBN = ?";
             PreparedStatement tComandoJDBC = conexao.prepareStatement(tComandoSQL);
 
@@ -133,6 +137,7 @@ public class LivroJdbcDAO implements LivroDAO
             tComandoJDBC.setInt(i++, pLivro.getAnoEdicao());
             tComandoJDBC.setInt(i++, pLivro.getEdicao());
             tComandoJDBC.setBigDecimal(i++, pLivro.getValorCompra());
+            tComandoJDBC.setTimestamp(i++, Timestamp.valueOf(LocalDateTime.now()));
             tComandoJDBC.setLong(i++, pLivro.getIsbn());
 
             // Executando o comando de regravação

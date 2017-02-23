@@ -1,0 +1,533 @@
+|-------> Iniciando log.....
+|-------> Registrando o driver.....
+|-------> Realizando a conexão.....
+DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE")
+    trying oracle.jdbc.OracleDriver
+getConnection returning oracle.jdbc.OracleDriver
+|-------> Conexão estabelecida.....
+SQLState(42000) vendor code(904)
+java.sql.SQLSyntaxErrorException: ORA-00904: "ATIVO": identificador inválido
+
+	at oracle.jdbc.driver.SQLStateMapping.newSQLException(SQLStateMapping.java:256)
+	at oracle.jdbc.driver.DatabaseError.newSQLException(DatabaseError.java:193)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:364)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:451)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:400)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:884)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:471)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:199)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:535)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:238)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForDescribe(T4CPreparedStatement.java:1196)
+	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:1444)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1662)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:4364)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeQuery(OraclePreparedStatement.java:4445)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeQuery(OraclePreparedStatementWrapper.java:6268)
+	at br.edu.opet.biblioteca.dao.jdbc.AlunoJdbcDAO.recovery(AlunoJdbcDAO.java:90)
+	at br.edu.opet.biblioteca.teste.TesteAlunoDao.main(TesteAlunoDao.java:42)
+SQLState...:42000
+Error Code.:904
+SQLState(42000) vendor code(904)
+java.sql.SQLSyntaxErrorException: ORA-00904: "ATIVO": identificador inválido
+
+	at oracle.jdbc.driver.SQLStateMapping.newSQLException(SQLStateMapping.java:256)
+	at oracle.jdbc.driver.DatabaseError.newSQLException(DatabaseError.java:193)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:364)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:451)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:400)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:884)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:471)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:199)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:535)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:238)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForDescribe(T4CPreparedStatement.java:1196)
+	at oracle.jdbc.driver.OracleStatement.executeMaybeDescribe(OracleStatement.java:1444)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1662)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:4364)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeQuery(OraclePreparedStatement.java:4445)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeQuery(OraclePreparedStatementWrapper.java:6268)
+	at br.edu.opet.biblioteca.dao.jdbc.AlunoJdbcDAO.recovery(AlunoJdbcDAO.java:90)
+	at br.edu.opet.biblioteca.teste.TesteAlunoDao.main(TesteAlunoDao.java:47)
+SQLState...:42000
+Error Code.:904
+|-------> Iniciando log.....
+|-------> Registrando o driver.....
+|-------> Realizando a conexão.....
+DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE")
+    trying oracle.jdbc.OracleDriver
+getConnection returning oracle.jdbc.OracleDriver
+|-------> Conexão estabelecida.....
+SQLState(23000) vendor code(1)
+java.sql.SQLIntegrityConstraintViolationException: ORA-00001: restrição exclusiva (ALUNO.SYS_C008122) violada
+
+	at oracle.jdbc.driver.SQLStateMapping.newSQLException(SQLStateMapping.java:217)
+	at oracle.jdbc.driver.DatabaseError.newSQLException(DatabaseError.java:193)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:364)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:451)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:400)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:884)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:471)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:199)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:535)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:238)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:1385)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1709)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:4364)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:4531)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeUpdate(OraclePreparedStatementWrapper.java:5575)
+	at br.edu.opet.biblioteca.dao.jdbc.AlunoJdbcDAO.create(AlunoJdbcDAO.java:49)
+	at br.edu.opet.biblioteca.teste.TesteAlunoDao.main(TesteAlunoDao.java:30)
+SQLState...:23000
+Error Code.:1
+SQLState(23000) vendor code(1)
+java.sql.SQLIntegrityConstraintViolationException: ORA-00001: restrição exclusiva (ALUNO.SYS_C008122) violada
+
+	at oracle.jdbc.driver.SQLStateMapping.newSQLException(SQLStateMapping.java:217)
+	at oracle.jdbc.driver.DatabaseError.newSQLException(DatabaseError.java:193)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:364)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:451)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:400)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:884)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:471)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:199)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:535)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:238)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:1385)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1709)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:4364)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:4531)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeUpdate(OraclePreparedStatementWrapper.java:5575)
+	at br.edu.opet.biblioteca.dao.jdbc.AlunoJdbcDAO.create(AlunoJdbcDAO.java:49)
+	at br.edu.opet.biblioteca.teste.TesteAlunoDao.main(TesteAlunoDao.java:35)
+SQLState...:23000
+Error Code.:1
+SQLState(42000) vendor code(920)
+java.sql.SQLSyntaxErrorException: ORA-00920: operador relacional inválido
+
+	at oracle.jdbc.driver.SQLStateMapping.newSQLException(SQLStateMapping.java:256)
+	at oracle.jdbc.driver.DatabaseError.newSQLException(DatabaseError.java:193)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:364)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:451)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:400)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:884)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:471)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:199)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:535)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:238)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:1385)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1709)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:4364)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:4531)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeUpdate(OraclePreparedStatementWrapper.java:5575)
+	at br.edu.opet.biblioteca.dao.jdbc.AlunoJdbcDAO.update(AlunoJdbcDAO.java:144)
+	at br.edu.opet.biblioteca.teste.TesteAlunoDao.main(TesteAlunoDao.java:63)
+SQLState...:42000
+Error Code.:920
+SQLState(42000) vendor code(920)
+java.sql.SQLSyntaxErrorException: ORA-00920: operador relacional inválido
+
+	at oracle.jdbc.driver.SQLStateMapping.newSQLException(SQLStateMapping.java:256)
+	at oracle.jdbc.driver.DatabaseError.newSQLException(DatabaseError.java:193)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:364)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:451)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:400)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:884)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:471)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:199)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:535)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:238)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:1385)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1709)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:4364)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:4531)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeUpdate(OraclePreparedStatementWrapper.java:5575)
+	at br.edu.opet.biblioteca.dao.jdbc.AlunoJdbcDAO.update(AlunoJdbcDAO.java:144)
+	at br.edu.opet.biblioteca.teste.TesteAlunoDao.main(TesteAlunoDao.java:68)
+SQLState...:42000
+Error Code.:920
+SQLState(42000) vendor code(920)
+java.sql.SQLSyntaxErrorException: ORA-00920: operador relacional inválido
+
+	at oracle.jdbc.driver.SQLStateMapping.newSQLException(SQLStateMapping.java:256)
+	at oracle.jdbc.driver.DatabaseError.newSQLException(DatabaseError.java:193)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:364)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:451)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:400)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:884)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:471)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:199)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:535)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:238)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:1385)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1709)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:4364)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:4531)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeUpdate(OraclePreparedStatementWrapper.java:5575)
+	at br.edu.opet.biblioteca.dao.jdbc.AlunoJdbcDAO.delete(AlunoJdbcDAO.java:186)
+	at br.edu.opet.biblioteca.teste.TesteAlunoDao.main(TesteAlunoDao.java:118)
+SQLState...:42000
+Error Code.:920
+SQLState(42000) vendor code(920)
+java.sql.SQLSyntaxErrorException: ORA-00920: operador relacional inválido
+
+	at oracle.jdbc.driver.SQLStateMapping.newSQLException(SQLStateMapping.java:256)
+	at oracle.jdbc.driver.DatabaseError.newSQLException(DatabaseError.java:193)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:364)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:451)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:400)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:884)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:471)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:199)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:535)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:238)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:1385)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1709)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:4364)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:4531)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeUpdate(OraclePreparedStatementWrapper.java:5575)
+	at br.edu.opet.biblioteca.dao.jdbc.AlunoJdbcDAO.delete(AlunoJdbcDAO.java:186)
+	at br.edu.opet.biblioteca.teste.TesteAlunoDao.main(TesteAlunoDao.java:123)
+SQLState...:42000
+Error Code.:920
+|-------> Iniciando log.....
+|-------> Registrando o driver.....
+|-------> Realizando a conexão.....
+DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE")
+    trying oracle.jdbc.OracleDriver
+getConnection returning oracle.jdbc.OracleDriver
+|-------> Conexão estabelecida.....
+SQLState(23000) vendor code(1)
+java.sql.SQLIntegrityConstraintViolationException: ORA-00001: restrição exclusiva (ALUNO.SYS_C008122) violada
+
+	at oracle.jdbc.driver.SQLStateMapping.newSQLException(SQLStateMapping.java:217)
+	at oracle.jdbc.driver.DatabaseError.newSQLException(DatabaseError.java:193)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:364)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:451)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:400)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:884)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:471)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:199)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:535)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:238)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:1385)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1709)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:4364)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:4531)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeUpdate(OraclePreparedStatementWrapper.java:5575)
+	at br.edu.opet.biblioteca.dao.jdbc.AlunoJdbcDAO.create(AlunoJdbcDAO.java:49)
+	at br.edu.opet.biblioteca.teste.TesteAlunoDao.main(TesteAlunoDao.java:30)
+SQLState...:23000
+Error Code.:1
+SQLState(23000) vendor code(1)
+java.sql.SQLIntegrityConstraintViolationException: ORA-00001: restrição exclusiva (ALUNO.SYS_C008122) violada
+
+	at oracle.jdbc.driver.SQLStateMapping.newSQLException(SQLStateMapping.java:217)
+	at oracle.jdbc.driver.DatabaseError.newSQLException(DatabaseError.java:193)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:364)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:451)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:400)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:884)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:471)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:199)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:535)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:238)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:1385)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1709)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:4364)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:4531)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeUpdate(OraclePreparedStatementWrapper.java:5575)
+	at br.edu.opet.biblioteca.dao.jdbc.AlunoJdbcDAO.create(AlunoJdbcDAO.java:49)
+	at br.edu.opet.biblioteca.teste.TesteAlunoDao.main(TesteAlunoDao.java:35)
+SQLState...:23000
+Error Code.:1
+SQLState(42000) vendor code(932)
+java.sql.SQLSyntaxErrorException: ORA-00932: tipos de dados inconsistentes: esperava NUMBER obteve TIMESTAMP
+
+	at oracle.jdbc.driver.SQLStateMapping.newSQLException(SQLStateMapping.java:256)
+	at oracle.jdbc.driver.DatabaseError.newSQLException(DatabaseError.java:193)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:364)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:451)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:400)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:884)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:471)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:199)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:535)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:238)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:1385)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1709)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:4364)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:4531)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeUpdate(OraclePreparedStatementWrapper.java:5575)
+	at br.edu.opet.biblioteca.dao.jdbc.AlunoJdbcDAO.update(AlunoJdbcDAO.java:144)
+	at br.edu.opet.biblioteca.teste.TesteAlunoDao.main(TesteAlunoDao.java:63)
+SQLState...:42000
+Error Code.:932
+SQLState(42000) vendor code(932)
+java.sql.SQLSyntaxErrorException: ORA-00932: tipos de dados inconsistentes: esperava NUMBER obteve TIMESTAMP
+
+	at oracle.jdbc.driver.SQLStateMapping.newSQLException(SQLStateMapping.java:256)
+	at oracle.jdbc.driver.DatabaseError.newSQLException(DatabaseError.java:193)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:364)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:451)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:400)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:884)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:471)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:199)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:535)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:238)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:1385)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1709)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:4364)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:4531)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeUpdate(OraclePreparedStatementWrapper.java:5575)
+	at br.edu.opet.biblioteca.dao.jdbc.AlunoJdbcDAO.update(AlunoJdbcDAO.java:144)
+	at br.edu.opet.biblioteca.teste.TesteAlunoDao.main(TesteAlunoDao.java:68)
+SQLState...:42000
+Error Code.:932
+|-------> Iniciando log.....
+|-------> Registrando o driver.....
+|-------> Realizando a conexão.....
+DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE")
+    trying oracle.jdbc.OracleDriver
+getConnection returning oracle.jdbc.OracleDriver
+|-------> Conexão estabelecida.....
+SQLState(23000) vendor code(1)
+java.sql.SQLIntegrityConstraintViolationException: ORA-00001: restrição exclusiva (ALUNO.SYS_C008122) violada
+
+	at oracle.jdbc.driver.SQLStateMapping.newSQLException(SQLStateMapping.java:217)
+	at oracle.jdbc.driver.DatabaseError.newSQLException(DatabaseError.java:193)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:364)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:451)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:400)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:884)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:471)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:199)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:535)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:238)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:1385)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1709)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:4364)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:4531)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeUpdate(OraclePreparedStatementWrapper.java:5575)
+	at br.edu.opet.biblioteca.dao.jdbc.AlunoJdbcDAO.create(AlunoJdbcDAO.java:49)
+	at br.edu.opet.biblioteca.teste.TesteAlunoDao.main(TesteAlunoDao.java:30)
+SQLState...:23000
+Error Code.:1
+SQLState(23000) vendor code(1)
+java.sql.SQLIntegrityConstraintViolationException: ORA-00001: restrição exclusiva (ALUNO.SYS_C008122) violada
+
+	at oracle.jdbc.driver.SQLStateMapping.newSQLException(SQLStateMapping.java:217)
+	at oracle.jdbc.driver.DatabaseError.newSQLException(DatabaseError.java:193)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:364)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:451)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:400)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:884)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:471)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:199)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:535)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:238)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:1385)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1709)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:4364)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:4531)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeUpdate(OraclePreparedStatementWrapper.java:5575)
+	at br.edu.opet.biblioteca.dao.jdbc.AlunoJdbcDAO.create(AlunoJdbcDAO.java:49)
+	at br.edu.opet.biblioteca.teste.TesteAlunoDao.main(TesteAlunoDao.java:35)
+SQLState...:23000
+Error Code.:1
+|-------> Iniciando log.....
+|-------> Registrando o driver.....
+|-------> Realizando a conexão.....
+DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE")
+    trying oracle.jdbc.OracleDriver
+getConnection returning oracle.jdbc.OracleDriver
+|-------> Conexão estabelecida.....
+SQLState(23000) vendor code(1)
+java.sql.SQLIntegrityConstraintViolationException: ORA-00001: restrição exclusiva (ALUNO.SYS_C008122) violada
+
+	at oracle.jdbc.driver.SQLStateMapping.newSQLException(SQLStateMapping.java:217)
+	at oracle.jdbc.driver.DatabaseError.newSQLException(DatabaseError.java:193)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:364)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:451)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:400)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:884)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:471)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:199)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:535)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:238)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:1385)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1709)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:4364)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:4531)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeUpdate(OraclePreparedStatementWrapper.java:5575)
+	at br.edu.opet.biblioteca.dao.jdbc.AlunoJdbcDAO.create(AlunoJdbcDAO.java:49)
+	at br.edu.opet.biblioteca.teste.TesteAlunoDao.main(TesteAlunoDao.java:30)
+SQLState...:23000
+Error Code.:1
+SQLState(23000) vendor code(1)
+java.sql.SQLIntegrityConstraintViolationException: ORA-00001: restrição exclusiva (ALUNO.SYS_C008122) violada
+
+	at oracle.jdbc.driver.SQLStateMapping.newSQLException(SQLStateMapping.java:217)
+	at oracle.jdbc.driver.DatabaseError.newSQLException(DatabaseError.java:193)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:364)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:451)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:400)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:884)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:471)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:199)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:535)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:238)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:1385)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1709)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:4364)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:4531)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeUpdate(OraclePreparedStatementWrapper.java:5575)
+	at br.edu.opet.biblioteca.dao.jdbc.AlunoJdbcDAO.create(AlunoJdbcDAO.java:49)
+	at br.edu.opet.biblioteca.teste.TesteAlunoDao.main(TesteAlunoDao.java:35)
+SQLState...:23000
+Error Code.:1
+|-------> Iniciando log.....
+|-------> Registrando o driver.....
+|-------> Realizando a conexão.....
+DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE")
+    trying oracle.jdbc.OracleDriver
+getConnection returning oracle.jdbc.OracleDriver
+|-------> Conexão estabelecida.....
+|-------> Iniciando log.....
+|-------> Registrando o driver.....
+|-------> Realizando a conexão.....
+DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE")
+    trying oracle.jdbc.OracleDriver
+getConnection returning oracle.jdbc.OracleDriver
+|-------> Conexão estabelecida.....
+SQLState(99999) vendor code(17003)
+java.sql.SQLException: Índice de coluna inválido
+	at oracle.jdbc.driver.SQLStateMapping.newSQLException(SQLStateMapping.java:149)
+	at oracle.jdbc.driver.DatabaseError.newSQLException(DatabaseError.java:193)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:317)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:508)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:554)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:833)
+	at oracle.jdbc.driver.OraclePreparedStatement.setTimestampInternal(OraclePreparedStatement.java:11765)
+	at oracle.jdbc.driver.OraclePreparedStatement.setTimestamp(OraclePreparedStatement.java:11716)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.setTimestamp(OraclePreparedStatementWrapper.java:1015)
+	at br.edu.opet.biblioteca.dao.jdbc.AlunoJdbcDAO.delete(AlunoJdbcDAO.java:179)
+	at br.edu.opet.biblioteca.teste.TesteAlunoDao.main(TesteAlunoDao.java:118)
+SQLState...:99999
+Error Code.:17003
+SQLState(99999) vendor code(17003)
+java.sql.SQLException: Índice de coluna inválido
+	at oracle.jdbc.driver.SQLStateMapping.newSQLException(SQLStateMapping.java:149)
+	at oracle.jdbc.driver.DatabaseError.newSQLException(DatabaseError.java:193)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:317)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:508)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:554)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:833)
+	at oracle.jdbc.driver.OraclePreparedStatement.setTimestampInternal(OraclePreparedStatement.java:11765)
+	at oracle.jdbc.driver.OraclePreparedStatement.setTimestamp(OraclePreparedStatement.java:11716)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.setTimestamp(OraclePreparedStatementWrapper.java:1015)
+	at br.edu.opet.biblioteca.dao.jdbc.AlunoJdbcDAO.delete(AlunoJdbcDAO.java:179)
+	at br.edu.opet.biblioteca.teste.TesteAlunoDao.main(TesteAlunoDao.java:123)
+SQLState...:99999
+Error Code.:17003
+|-------> Iniciando log.....
+|-------> Registrando o driver.....
+|-------> Realizando a conexão.....
+DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE")
+    trying oracle.jdbc.OracleDriver
+getConnection returning oracle.jdbc.OracleDriver
+|-------> Conexão estabelecida.....
+SQLState(23000) vendor code(1)
+java.sql.SQLIntegrityConstraintViolationException: ORA-00001: restrição exclusiva (ALUNO.SYS_C008157) violada
+
+	at oracle.jdbc.driver.SQLStateMapping.newSQLException(SQLStateMapping.java:217)
+	at oracle.jdbc.driver.DatabaseError.newSQLException(DatabaseError.java:193)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:364)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:451)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:400)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:884)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:471)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:199)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:535)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:238)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:1385)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1709)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:4364)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:4531)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeUpdate(OraclePreparedStatementWrapper.java:5575)
+	at br.edu.opet.biblioteca.dao.jdbc.AlunoJdbcDAO.create(AlunoJdbcDAO.java:48)
+	at br.edu.opet.biblioteca.teste.TesteAlunoDao.main(TesteAlunoDao.java:30)
+SQLState...:23000
+Error Code.:1
+SQLState(23000) vendor code(1)
+java.sql.SQLIntegrityConstraintViolationException: ORA-00001: restrição exclusiva (ALUNO.SYS_C008157) violada
+
+	at oracle.jdbc.driver.SQLStateMapping.newSQLException(SQLStateMapping.java:217)
+	at oracle.jdbc.driver.DatabaseError.newSQLException(DatabaseError.java:193)
+	at oracle.jdbc.driver.DatabaseError.createSqlException(DatabaseError.java:364)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:451)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:400)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:884)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:471)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:199)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:535)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:238)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:1385)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1709)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:4364)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:4531)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeUpdate(OraclePreparedStatementWrapper.java:5575)
+	at br.edu.opet.biblioteca.dao.jdbc.AlunoJdbcDAO.create(AlunoJdbcDAO.java:48)
+	at br.edu.opet.biblioteca.teste.TesteAlunoDao.main(TesteAlunoDao.java:35)
+SQLState...:23000
+Error Code.:1
+|-------> Iniciando log.....
+|-------> Registrando o driver.....
+|-------> Realizando a conexão.....
+DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE")
+    trying oracle.jdbc.OracleDriver
+getConnection returning oracle.jdbc.OracleDriver
+|-------> Conexão estabelecida.....
+|-------> Iniciando log.....
+|-------> Registrando o driver.....
+|-------> Realizando a conexão.....
+DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE")
+    trying oracle.jdbc.OracleDriver
+getConnection returning oracle.jdbc.OracleDriver
+|-------> Conexão estabelecida.....
+|-------> Iniciando log.....
+|-------> Registrando o driver.....
+|-------> Realizando a conexão.....
+DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE")
+    trying oracle.jdbc.OracleDriver
+getConnection returning oracle.jdbc.OracleDriver
+|-------> Conexão estabelecida.....
+|-------> Iniciando log.....
+|-------> Registrando o driver.....
+|-------> Realizando a conexão.....
+DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE")
+    trying oracle.jdbc.OracleDriver
+getConnection returning oracle.jdbc.OracleDriver
+|-------> Conexão estabelecida.....
+|-------> Iniciando log.....
+|-------> Registrando o driver.....
+|-------> Realizando a conexão.....
+DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE")
+    trying oracle.jdbc.OracleDriver
+getConnection returning oracle.jdbc.OracleDriver
+|-------> Conexão estabelecida.....
+|-------> Iniciando log.....
+|-------> Registrando o driver.....
+|-------> Realizando a conexão.....
+DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE")
+    trying oracle.jdbc.OracleDriver
+getConnection returning oracle.jdbc.OracleDriver
+|-------> Conexão estabelecida.....
+|-------> Iniciando log.....
+|-------> Registrando o driver.....
+|-------> Realizando a conexão.....
+DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE")
+    trying oracle.jdbc.OracleDriver
+getConnection returning oracle.jdbc.OracleDriver
+|-------> Conexão estabelecida.....
