@@ -2,13 +2,8 @@ package opet;
 
 public class AloMundo
 {
-
     public static void main(String[] args)
     {
-        System.out.println("Alo mundo cruel");
-        // Teste
-        // Teste
-
+        System.out.println("Relatório de Cliente Implementado");
     }
-
 }
